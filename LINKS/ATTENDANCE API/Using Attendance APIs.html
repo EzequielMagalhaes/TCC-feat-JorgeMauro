@@ -1,0 +1,1813 @@
+<!DOCTYPE html>
+<!-- saved from url=(0096)https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="./Using Attendance APIs_files/search-script.js.download" type="text/javascript"></script>
+     <!-- Global site tag (gtag.js) - Google Analytics -->
+     <script async="" src="./Using Attendance APIs_files/js"></script>
+     <script>
+       window.dataLayer = window.dataLayer || [];
+       function gtag(){dataLayer.push(arguments);}
+       gtag('js', new Date());
+ 
+       gtag('config', 'UA-173992978-1');
+     </script>
+    <title>Using Attendance APIs</title>
+
+    <!-- Search --> 
+
+    
+        <script src="./Using Attendance APIs_files/jquery.js.download"></script>
+    
+
+    <meta name="description" content="">
+    <link href="./Using Attendance APIs_files/css2" rel="stylesheet">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" href="https://blackboard.github.io/assets/img/favicon-96x96.png">
+    <!-- CSS and fonts -->
+    <link href="./Using Attendance APIs_files/icon" rel="stylesheet">
+    <link href="./Using Attendance APIs_files/css" rel="stylesheet">
+    <link rel="stylesheet" href="./Using Attendance APIs_files/materialize.min.css">
+    <link href="./Using Attendance APIs_files/main.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <!-- JS -->
+    <script src="./Using Attendance APIs_files/materialize.min.js.download"></script>
+    <script type="text/javascript" src="./Using Attendance APIs_files/accordion-menu.js.download"></script>
+    <script type="text/javascript" src="./Using Attendance APIs_files/toc.min.js.download"></script>
+    <script>
+var pageId = "rest_apis-learn-working_with_learn_apis-attendance";
+        if (!pageId || pageId.includes('/')){
+            pageId = ""
+        }
+        pageId = "#" + pageId
+        $(document).ready(function () {
+            
+
+            $( "#menu-trigger" ).click(function() {
+                $( ".menu" ).toggle(); 
+                $( ".menu" ).css( "position", "absolute" ); 
+            });
+             
+            new AccordionMenu('.col-menu');
+            $( document ).find( "h2" ).css( "border-left-color", "#A234B5" );
+
+            
+            $( "h2,h3" ).addClass( "section scrollspy" );
+            $('.scrollspy').scrollSpy();
+            
+
+            $('.sidenav').sidenav();
+            $('.collapsible').collapsible();
+            // $('.collapsible').collapsible('open', pageId);
+
+            if( $( "li" ).find( pageId ) ){
+                $(pageId).addClass("open");
+                $("li" + pageId ).css("display","block");
+                $( "li" + pageId ).parentsUntil(".col-menu").css( "height","auto" );
+                $(pageId).parentsUntil(".col-menu").addClass("open");
+                $( pageId ).find( "a" ).css( "border-left-color", "#A234B5" );
+                $( pageId ).find( "a" ).css( "maincontentborder-left-style", "solid" );
+                $( pageId ).find( "a" ).css( "border-left-width", "6px" );
+                $( pageId ).find( "a" ).css( "font-weight", "bold" );
+            }
+             // This is the index search, I am avoiding to load the whole search.json everywhere
+            if(pageId == "#index" || pageId == "#404-notFound"){
+                SimpleJekyllSearch({
+                    searchInput: document.getElementById("search-input"),
+                    resultsContainer: document.getElementById("results-container"),
+                    json: "/search.json",
+                    searchResultTemplate: '<li><a href="{url}" desc="{desc}" target="{target}">{title}</a></li>'
+                });
+            }
+            console.log($('.maincontent').height())
+
+});
+
+  // This part will display the rest-apis or blogs menu
+  // getting the divs first
+  const homeDisplay = document.getElementsByClassName("home-main");
+  const homeRestApis = document.getElementsByClassName("home-rest-apis");
+  const homeBlogs = document.getElementsByClassName("home-blogs");
+
+  function home_display_restapis() {
+  homeDisplay[0].classList.add("hidden");
+  homeRestApis[0].classList.remove("hidden");
+  homeBlogs[0].classList.add("hidden");
+}
+
+function home_display_blogs() {
+  homeDisplay[0].classList.add("hidden");
+  homeBlogs[0].classList.remove("hidden");
+  homeRestApis[0].classList.add("hidden");
+}
+    </script>
+
+    <!--
+        Ally Website Integration Script.
+        "data-ally-af-style" can be one of the following values to customize the look and feel:
+            - flag_small
+            - flag_large
+            - bar_bottom
+    -->
+    <script data-ally-loader="" data-ally-platform-name="web" data-ally-client-id="4826" data-ally-af-style="flag_small" src="./Using Attendance APIs_files/ally.ui.js.download">
+    </script><script type="text/javascript" src="./Using Attendance APIs_files/ally.ui.08ec97c995e2191cbc66.js.download"></script>
+    <!-- This is the index search script -->
+<link class="ally-styles" href="./Using Attendance APIs_files/ally.715de324aad5642d066a4fb5bac03290.css" id="ally-styles" rel="stylesheet"></head>
+<body class="ally-tooltips-enabled">
+
+    <header>
+      <a href="https://blackboard.github.io/">  <img src="./Using Attendance APIs_files/ANTHOLOGY-Horizontal Logo-RGB-8-20-Final_White.svg" id="anthologylogoheader" alt="Anthology Logo"></a>
+        <div class="header-buttons">
+            <a href="https://blackboard.github.io/search"><i class="material-icons">search</i></a>
+            <a href="https://blackboard.github.io/feed.xml"><i class="material-icons">rss_feed</i></a>
+            <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com#" id="menu-trigger"><i class="material-icons">menu</i></a>
+        </div>
+    </header>
+
+<div class="menu" style="min-height: 16127px;">
+  <div class="accordion-menu col-menu">
+    <ul class="open" style="height: auto;">
+      <li class="first-level" id="home">
+        <a href="https://blackboard.github.io/">Home</a>
+        
+      </li>
+      <li class="first-level open" id="rest_apis" onclick="home_display_restapis()" style="height: auto;">
+        <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com#">  REST APIs <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+          
+          <ul class="open" style="height: auto;">
+          
+          
+          <li class="second-level open" id="rest_apis-learn" style="height: auto;">
+            <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com">Learn<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+          
+            <ul class="open" style="height: auto;">
+              
+              
+              <li class="third-level" id="rest_apis-learn-getting-started">
+                <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com">Getting Started<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+              
+                <ul>
+                  
+                  <li class="content" id="rest_apis-learn-getting-started-first-steps">
+                    <a href="https://blackboard.github.io/rest-apis/learn/getting-started/first-steps" target="_self">First Steps with Learn REST API</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-getting-started-lti-or-rest">
+                    <a href="https://blackboard.github.io/rest-apis/learn/getting-started/lti-or-rest" target="_self">LTI or REST</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-getting-started-basic_auth">
+                    <a href="https://blackboard.github.io/rest-apis/learn/getting-started/basic-authentication" target="_self">Basic Authentication</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-getting-started-registry">
+                    <a href="https://blackboard.github.io/rest-apis/learn/getting-started/registry" target="_self">Registry</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-getting-started-entitlements">
+                    <a href="https://blackboard.github.io/rest-apis/learn/getting-started/bookmarklet" target="_self">Managing Entitlements</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-getting-started-releasing_integration">
+                    <a href="https://blackboard.github.io/rest-apis/learn/getting-started/releasing-your-integration" target="_self">Releasing your Integration</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-getting-started-3lo">
+                    <a href="https://blackboard.github.io/rest-apis/learn/getting-started/3lo" target="_self">Three-Legged OAuth</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-getting-started-api">
+                    <a href="https://developer.anthology.com/portal/displayApi" target="_blank">Learn API</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-getting-started-dev_portal">
+                    <a href="https://developer.anthology.com/portal/displayApi" target="_blank">Developer Portal</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-getting-started-framework">
+                    <a href="https://blackboard.github.io/rest-apis/learn/getting-started/framework" target="_self">Framework</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-getting-started-tutorials">
+                    <a href="https://blackboard.github.io/rest-apis/learn/getting-started/tutorials" target="_self">Tutorials</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+              
+              
+              <li class="third-level" id="rest_apis-learn-admin">
+                <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com">Admin<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+              
+                <ul>
+                  
+                  <li class="content" id="rest_apis-learn-admin-rest_and_learn">
+                    <a href="https://blackboard.github.io/rest-apis/learn/admin/rest-and-learn" target="_self">Rest and Learn</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-admin-rest3LO_and_learnSSO">
+                    <a href="https://blackboard.github.io/rest-apis/learn/admin/rest3LO-and-learnSSO" target="_self">Rest 3LO and Learn SSO</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-admin-group_quotas_rates">
+                    <a href="https://blackboard.github.io/rest-apis/learn/admin/groups-quotas-rates" target="_self">Group, Quotas, Rates</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-admin-prod-groups">
+                    <a href="https://blackboard.github.io/rest-apis/learn/admin/production-groups" target="_self">Production Groups</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+              
+              
+              <li class="third-level open" id="rest_apis-learn-working_with_learn_apis" style="height: auto;">
+                <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com">Working with Learn APIs<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+              
+                <ul class="open" style="height: auto;">
+                  
+                  <li class="content" id="rest_apis-learn-working_with_learn_apis-groups_and_api">
+                    <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/groups-and-rest-api" target="_self">Working with Groups and REST APIs</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-working_with_learn_apis-adaptive_release">
+                    <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/adaptive-release" target="_self">Working with Adaptive Release and REST APIs</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-working_with_learn_apis-creating_content_with_API">
+                    <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/creating-content" target="_self">Working with content and REST APIs</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-working_with_learn_apis-calendar_apis">
+                    <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/using-calendar-api" target="_self">Working with Calendar APIs</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-working_with_learn_apis-course_toc">
+                    <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/course-toc" target="_self">Using the course TOC APIs</a>
+                  </li>
+                  
+                  <li class="content open" id="rest_apis-learn-working_with_learn_apis-attendance" style="display: block;">
+                    <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance" target="_self" style="border-left-color: rgb(162, 52, 181); border-left-width: 6px; font-weight: bold;">Using Attendance APIs</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+              
+              
+              <li class="third-level" id="rest_apis-learn-examples">
+                <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com">Examples<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+              
+                <ul>
+                  
+                  <li class="content" id="rest_apis-learn-examples-csharpdemo">
+                    <a href="https://blackboard.github.io/rest-apis/learn/examples/csharp-demo" target="_self">C# Demo</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-examples-curl_attach_demo">
+                    <a href="https://blackboard.github.io/rest-apis/learn/examples/curl-attachments-demo" target="_self">cURL attachments demo</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-examples-curl_demo">
+                    <a href="https://blackboard.github.io/rest-apis/learn/examples/curl-demo" target="_self">cURL demo</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-examples-golang_demo">
+                    <a href="https://blackboard.github.io/rest-apis/learn/examples/golang-demo" target="_self">GoLang demo</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-examples-java_command_line">
+                    <a href="https://blackboard.github.io/rest-apis/learn/examples/java-command-line" target="_self">Java Command Line</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-examples-java-demo">
+                    <a href="https://blackboard.github.io/rest-apis/learn/examples/java-demo" target="_self">Java Demo</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-examples-php-demo">
+                    <a href="https://blackboard.github.io/rest-apis/learn/examples/php-demo" target="_self">PHP Demo</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-examples-python-demo">
+                    <a href="https://blackboard.github.io/rest-apis/learn/examples/python-demo" target="_self">Python Demo</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-examples-ruby_demo">
+                    <a href="https://blackboard.github.io/rest-apis/learn/examples/ruby-demo" target="_self">Ruby Demo</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-examples-angular_demo">
+                    <a href="https://github.com/blackboard/BBDN-REST-Angular-WithProxy" target="_blank">Angular Demo (GitHub)</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-examples-nodejs_demo">
+                    <a href="https://github.com/blackboard/BBDN-LTI-Tool-Provider-Node" target="_blank">NodeJS Demo (GitHub)</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+              
+              
+              <li class="third-level" id="rest_apis-learn-advanced">
+                <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com">Advanced<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+              
+                <ul>
+                  
+                  <li class="content" id="rest_apis-learn-advanced-soap_to_rest">
+                    <a href="https://blackboard.github.io/rest-apis/learn/advanced/soap-to-rest-mapping" target="_self">SOAP to REST Mapping</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-advanced-bbml">
+                    <a href="https://blackboard.github.io/rest-apis/learn/advanced/bbml" target="_self">BBML</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-advanced-content_hndlr">
+                    <a href="https://blackboard.github.io/rest-apis/learn/advanced/contenthandler-datatypes" target="_self">Content Handler Datatypes</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-advanced-crosslist_courses">
+                    <a href="https://blackboard.github.io/rest-apis/learn/advanced/merge-and-crosslist-courses" target="_self">Merge and Crosslist Courses</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-advanced-ultra_assignments">
+                    <a href="https://blackboard.github.io/rest-apis/learn/advanced/ultra-assignments" target="_self">Ultra Assignments</a>
+                  </li>
+                  
+                  <li class="content" id="rest_apis-learn-advanced-dynamic_rendering">
+                    <a href="https://blackboard.github.io/rest-apis/learn/advanced/dynamic-rendering-with-template-variables" target="_self">Dynamic Rendering</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+              
+              
+              <li class="third-level" id="rest_apis-learn-sandbox">
+                <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com">Sandbox<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+              
+                <ul>
+                  
+                  <li class="content" id="rest_apis-learn-sandbox-developer_ami">
+                    <a href="https://blackboard.github.io/rest-apis/learn/sandbox/developer-ami" target="_self">Developer AMI</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+              
+              
+              <li class="third-level" id="rest_apis-learn-bbapp">
+                <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com">Learn App<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+              
+                <ul>
+                  
+                  <li class="content" id="rest_apis-learn-bbapp-student_launch_schema">
+                    <a href="https://blackboard.github.io/rest-apis/learn/blackboard-app/bbapp-students-launch-schema" target="_self">Bb App students launch schema</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+              
+            </ul>
+          </li>
+        
+      
+          
+          
+          <li class="second-level" id="rest_apis-ally">
+            <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com">Ally<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+          
+            <ul>
+              
+              
+              <li class="content" id="rest_apis-ally-getting_started">
+                <a href="https://blackboard.github.io/rest-apis/ally/getting-started">Getting Started with Ally</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="rest_apis-ally-about_api_doc">
+                <a href="https://blackboard.github.io/rest-apis/ally/about-api-documentation">About the Ally API Documentation</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="rest_apis-ally-api">
+                <a href="https://blackboard.github.io/rest-apis/ally/api">Ally API</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="rest_apis-ally-authorization">
+                <a href="https://blackboard.github.io/rest-apis/ally/auth">Authorization in Ally</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="rest_apis-ally-uploading_files">
+                <a href="https://blackboard.github.io/rest-apis/ally/uploading-files">Uploading Files in Ally</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="rest_apis-ally-check_status">
+                <a href="https://blackboard.github.io/rest-apis/ally/check-status">Check Status in Ally</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="rest_apis-ally-getting_feedback">
+                <a href="https://blackboard.github.io/rest-apis/ally/get-feedback">Getting Feedback in Ally</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="rest_apis-ally-getting_batched_feedback">
+                <a href="https://blackboard.github.io/rest-apis/ally/get-batched-feedback">Getting Batched Feedback in Ally</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="rest_apis-ally-api_feedback_def">
+                <a href="https://blackboard.github.io/rest-apis/ally/feedback-definitions">Feedback Definitions in Ally</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="rest_apis-ally-ui_integration">
+                <a href="https://blackboard.github.io/rest-apis/ally/ui-integration">UI Integration in Ally</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+            </ul>
+          </li>
+        
+      
+          
+          
+          <li class="second-level" id="rest_apis-student">
+            <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com">Student<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+          
+            <ul>
+              
+              
+              <li class="third-level" id="">
+                <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com">Getting Started with Student<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+              
+                <ul>
+                  
+                  <li class="content" id="rest_apis-student-getting-started-first-steps">
+                    <a href="https://blackboard.github.io/rest-apis/student/getting-started/student-first-steps" target="_self">First Steps with Student REST API</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+              
+              
+              <li class="third-level" id="">
+                <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com">Examples<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+              
+                <ul>
+                  
+                </ul>
+              </li>
+            
+              
+              
+              <li class="third-level" id="">
+                <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com">Training Videos<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+              
+                <ul>
+                  
+                </ul>
+              </li>
+            
+              
+              
+              <li class="third-level" id="">
+                <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com">Service Catalog<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+              
+                <ul>
+                  
+                  <li class="content" id="rest_apis-student-servicecatalog-about">
+                    <a href="https://blackboard.github.io/rest-apis/student/servicecatalog/about-student-service-catalog" target="_self">About Service Catalog</a>
+                  </li>
+                  
+                  <li class="content" id="">
+                    <a href="https://www.mycampusinsight.com/" target="_blank">Log into mycampusinsight</a>
+                  </li>
+                  
+                </ul>
+              </li>
+            
+              
+            </ul>
+          </li>
+        
+      
+          
+          
+          <li class="second-level" id="rest_apis-learn-uef">
+            <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com">UEF &amp; Premium APIs<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+          
+            <ul>
+              
+              
+              <li class="content" id="rest_apis-learn-uef-getting_started">
+                <a href="https://blackboard.github.io/rest-apis/learn/uef/getting-started">Getting Started</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="rest_apis-learn-uef-security-and-tokens">
+                <a href="https://blackboard.github.io/rest-apis/learn/uef/security-and-tokens">Security and Tokens on UEF</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="rest_apis-learn-uef_tutorial_lti">
+                <a href="https://blackboard.github.io/rest-apis/learn/uef/lti-to-uef-tutorial">Migrating LTI Tool to UEF</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="rest_apis-learn-uef-launch_context_added_nwl">
+                <a href="https://blackboard.github.io/rest-apis/learn/uef/lti_launch_context_added">LTI Launch context added</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="rest_apis-learn-uef-communication_page_lvl_analytics">
+                <a href="https://blackboard.github.io/rest-apis/learn/uef/communication_page_lvl_analytics-id">Communication page-level analytics</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="rest_apis-learn-uef-documentation">
+                <a href="https://blackboard.github.io/rest-apis/learn/uef/documentation">UEF Documentation</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="rest_apis-learn-uef-tutorials">
+                <a href="https://blackboard.github.io/rest-apis/learn/uef/tutorials">UEF Tutorials</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="rest_apis-learn-uef-configure">
+                <a href="https://blackboard.github.io/rest-apis/learn/uef/configure-uef">Configuring Learn and UEF</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="rest_apis-learn-uef-request_premium_apis">
+                <a href="https://blackboard.github.io/rest-apis/learn/uef/requesting-premium-apis">Requesting premium APIs</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+            </ul>
+          </li>
+        
+      
+          
+        </ul>
+        
+      </li>
+      <li class="first-level" id="lti" onclick="">
+        <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com#">  LTI <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+          
+          <ul>
+          
+          
+          <li class="content" id="lti-gs_with_lti">
+            <a href="https://blackboard.github.io/lti/getting-started-with-lti">Getting Started with LTI</a>
+          </li>
+          
+            <ul>
+              
+            </ul>
+          
+        
+      
+          
+          
+          <li class="content" id="lti-registration-deployment">
+            <a href="https://blackboard.github.io/lti/lti-registration-and-deployment">LTI Registration and Deployment with Learn</a>
+          </li>
+          
+            <ul>
+              
+            </ul>
+          
+        
+      
+          
+          
+          <li class="content" id="sanctioned-lti-registration-deployment">
+            <a href="https://blackboard.github.io/lti/sanctioned-lti-registration-and-deployment">Sanctioned LTI Registration and Deployment with Learn</a>
+          </li>
+          
+            <ul>
+              
+            </ul>
+          
+        
+      
+          
+          
+          <li class="content" id="lti-deep_linking_two">
+            <a href="https://blackboard.github.io/lti/deep-linking-two-json">Deep Linking 2.0 Sample Json</a>
+          </li>
+          
+            <ul>
+              
+            </ul>
+          
+        
+      
+          
+          
+          <li class="content" id="lti-trouble-turn_on_all_switches">
+            <a href="https://blackboard.github.io/lti/turn-on-all-switches">Are your switches on? (Troubleshooting)</a>
+          </li>
+          
+            <ul>
+              
+            </ul>
+          
+        
+      
+          
+          
+          <li class="second-level" id="lti-tutorials">
+            <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com">Tutorials<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+          
+            <ul>
+              
+              
+              <li class="content" id="lti-tutorials-implementation-guide">
+                <a href="https://blackboard.github.io/lti/tutorials/implementation-guide">Implementation Guide</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="lti-tutorials-develop_lti_advantage">
+                <a href="https://blackboard.github.io/lti/tutorials/develop-lti-advantage-solution">Develop LTI Advantage Solution</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="lti-tutorials_names_and_roles">
+                <a href="https://blackboard.github.io/lti/tutorials/names-and-roles">Names and Roles</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="lti-tutorials-pylti1p3">
+                <a href="https://blackboard.github.io/lti/tutorials/py-lti-1p3">PyLti1p3 Library</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+            </ul>
+          </li>
+        
+      
+          
+          
+          <li class="second-level" id="lti-core-launch">
+            <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com">LTI 1.3 Core Launch<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+          
+            <ul>
+              
+              
+              <li class="content" id="lti-core-launch-oidc_login">
+                <a href="https://blackboard.github.io/lti/core/oidc-login">Handling OIDC Login</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="lti-core-launch-id_token">
+                <a href="https://blackboard.github.io/lti/core/id-token">Processing the id_token JWT</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+            </ul>
+          </li>
+        
+      
+          
+          
+          <li class="second-level" id="lti-migrating">
+            <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com">Migrating<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+          
+            <ul>
+              
+              
+              <li class="content" id="lti-migrating-from_11_to_13">
+                <a href="https://blackboard.github.io/lti/migrating/migrating-11">Migrating from LTI 1.1 to 1.3</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="lti-migrating-testing_tool">
+                <a href="https://blackboard.github.io/lti/migrating/testing-tool">Testing tool</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+            </ul>
+          </li>
+        
+      
+          
+          
+          <li class="second-level" id="lti-proctoring">
+            <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com">Ultra Proctoring Service Integration<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+          
+            <ul>
+              
+              
+              <li class="content" id="lti-proctoring-proctoring_service">
+                <a href="https://blackboard.github.io/lti/proctoring/ultra-proctoring-service-integration">Ultra Proctoring Service Integration</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="lti-proctoring-proctoring_service_tutorials">
+                <a href="https://blackboard.github.io/lti/proctoring/ultra-proctoring-service-tutorials">Ultra Proctoring Service Tutorials</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+            </ul>
+          </li>
+        
+      
+          
+        </ul>
+        
+      </li>
+      <li class="first-level" id="partners" onclick="">
+        <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com#">  Partners <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+          
+          <ul>
+          
+          
+          <li class="content" id="partners-become_a_partner">
+            <a href="https://blackboard.github.io/partners/become-a-partner">Become a Partner</a>
+          </li>
+          
+            <ul>
+              
+            </ul>
+          
+        
+      
+          
+          
+          <li class="content" id="partners-blackboard_app_catalog_faq">
+            <a href="https://blackboard.github.io/partners/blackboard-app-catalog-faq">Anthology App catalog FAQ</a>
+          </li>
+          
+            <ul>
+              
+            </ul>
+          
+        
+      
+          
+        </ul>
+        
+      </li>
+      <li class="first-level" id="caliper" onclick="">
+        <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com#">  Caliper <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+          
+          <ul>
+          
+          
+          <li class="second-level" id="caliper-getting-started">
+            <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com">Getting Started<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+          
+            <ul>
+              
+              
+              <li class="content" id="caliper-gs-getting_started">
+                <a href="https://blackboard.github.io/caliper/getting-started/getting-started-with-caliper">Getting Started with Caliper</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="caliper-gs-caliper-event_store_in_learn">
+                <a href="https://blackboard.github.io/caliper/getting-started/caliper-event-store-for-learn">Caliper Event Store in Learn</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="caliper-gs-metric_profiles">
+                <a href="https://blackboard.github.io/caliper/getting-started/metric-profiles">Metric Profiles</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+            </ul>
+          </li>
+        
+      
+          
+          
+          <li class="second-level" id="caliper-events">
+            <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com">Events<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+          
+            <ul>
+              
+              
+              <li class="content" id="caliper-events-guide">
+                <a href="https://blackboard.github.io/caliper/events/event-guide">Event Guide</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="caliper-events-assesments">
+                <a href="https://blackboard.github.io/caliper/events/assessment-events">Assessment Events</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="caliper-events-assignables">
+                <a href="https://blackboard.github.io/caliper/events/assignable-events">Assignable Events</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="caliper-events-blogs">
+                <a href="https://blackboard.github.io/caliper/events/blog-events">Blog Events</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="caliper-events-calculated_grade_snapshots">
+                <a href="https://blackboard.github.io/caliper/events/calculated-grade-snapshot-events">Calculated grade snapshot events</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="caliper-events-course_group">
+                <a href="https://blackboard.github.io/caliper/events/course-group-events">Course Group Events</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="caliper-events-content_events">
+                <a href="https://blackboard.github.io/caliper/events/content-events">Content Events</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="caliper-events-forum">
+                <a href="https://blackboard.github.io/caliper/events/forum-events">Forum Events</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="caliper-events-grade_events">
+                <a href="https://blackboard.github.io/caliper/events/grade-events">Grade Events</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="caliper-events-lti_events">
+                <a href="https://blackboard.github.io/caliper/events/lti-events">LTI Events</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="caliper-events-sessions">
+                <a href="https://blackboard.github.io/caliper/events/session-events">Session Events</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="caliper-events-views">
+                <a href="https://blackboard.github.io/caliper/events/view-events">View Events</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+              
+              <li class="content" id="caliper-events-wikis">
+                <a href="https://blackboard.github.io/caliper/events/wiki-events">Wiki Events</a>
+              </li>
+              
+                <ul>
+                  
+                </ul>
+              
+            
+              
+            </ul>
+          </li>
+        
+      
+          
+        </ul>
+        
+      </li>
+      <li class="first-level" id="community" onclick="">
+        <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com#">  Community <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+          
+          <ul>
+          
+          
+          <li class="content" id="community-dev_portal">
+            <a href="https://blackboard.github.io/community/dev-portal">Developer Portal</a>
+          </li>
+          
+            <ul>
+              
+            </ul>
+          
+        
+      
+          
+          
+          <li class="content" id="community-getting_involved">
+            <a href="https://blackboard.github.io/community/getting-involved">Getting involved</a>
+          </li>
+          
+            <ul>
+              
+            </ul>
+          
+        
+      
+          
+          
+          <li class="content" id="community-contact_us">
+            <a href="https://blackboard.github.io/community/contact">Contact us</a>
+          </li>
+          
+            <ul>
+              
+            </ul>
+          
+        
+      
+          
+        </ul>
+        
+      </li>
+      <li class="first-level" id="blogs" onclick="home_display_blogs()">
+        <a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com#">  Blogs <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 451.847 451.847" xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"></path> </g> </svg></a>
+          
+          <ul>
+            
+              <li class="content" id="20220812-devcon2022">
+                <a href="https://blackboard.github.io/blog/2022/07/12/DevCon2022.html">DevCon 2022 Presentations!</a>
+              </li>
+            
+              <li class="content" id="20210722-nomoreprivatekeys">
+                <a href="https://blackboard.github.io/blog/2021/07/22/LTI-1.3-tools-must-generate-their-own-keys-and-JWKS-URL.html">LTI 1.3 tools must generate their own keys and JWKS URL</a>
+              </li>
+            
+              <li class="content" id="20210511-uefnocookies">
+                <a href="https://blackboard.github.io/blog/2021/05/10/use-one-time-session-tokens-instead-of-cookies-for-UEF-authentication.html">Use One-Time Session Token to Authenticate with UEF</a>
+              </li>
+            
+              <li class="content" id="20210106-howtocreatelimiteduser">
+                <a href="https://blackboard.github.io/blog/2021/01/06/How-to-Create-a-User-With-Limited-Entitlements-For-REST-API-Calls.html">How to Create a User With Limited Entitlements For REST API Calls</a>
+              </li>
+            
+              <li class="content" id="20210105-caliperdocupdates">
+                <a href="https://blackboard.github.io/blog/2021/01/05/Caliper-Documentation-Updated-for-1.1.html">Caliper Documentation Updated for 1.1</a>
+              </li>
+            
+          </ul>
+          
+          <ul>
+          
+        </ul>
+        
+      </li>
+    </ul>
+  </div>
+</div>
+
+<main class="maincontent" data-ally-content-id="0" data-ally-webpage="">
+   <h1 id="using-attendance-apis">Using Attendance APIs</h1>
+
+<blockquote>
+  <p>Tested Using Blackboard Learn Release 3900.50.0-rel.21+840a19d</p>
+</blockquote>
+
+<h2 id="introduction" class="section scrollspy" style="border-left-color: rgb(162, 52, 181);">Introduction</h2>
+
+<p>Let’s say you have several classes that require you to know if a student arrived at all to a class, was late, completely Absent and later student is excused because something happened.</p>
+
+<p>Well, this API will allow you to do so or to integrate it with your attendance system and add a grade to the mix in the grade center.</p>
+
+<p>Many instructors use attendance data as part of their students’ overall grades. Also, some institutions and programs have attendance policies that require instructors to track the number of class meetings students have missed.</p>
+
+<p>Attendance data is also used in these ways:</p>
+
+<ul>
+  <li>International students who must maintain visas may need to meet attendance requirements.</li>
+  <li>Institutions may need to prove “seat time” for federal funding or accreditation.</li>
+  <li>Many institutions and instructors use attendance as they focus on student retention.</li>
+</ul>
+
+<p>Jumping ahead a bit, Attendance can be found within Ultra course view and Original course view, in different places, so here is a look on where to find them on each course view</p>
+
+<p><img src="./Using Attendance APIs_files/docs-site_attendance-1.png" alt="Image showing the location of attendance in original and Ultra course"></p>
+
+<p>Alright, that is how you find attendance but what about its components? Let´s review them:</p>
+
+<ol>
+  <li>User/Attendees</li>
+  <li>Meeting / Meetings</li>
+  <li>Attendance records</li>
+  <li>Attendance Report</li>
+  <li>Report CSV</li>
+  <li>The meeting itself</li>
+</ol>
+
+<p>Other parts such grading or overall score, Average attendance score and other evaluation criteria are part of Attendance but we will not go deep since those are calculated based on the Configuration you have on your scores. Please review https://help.blackboard.com/Learn/Administrator/SaaS/Tools_Management/Attendance for more information on that.</p>
+
+<p>Let’s see those parts in the GUI:</p>
+
+<p><img src="./Using Attendance APIs_files/docs-site_attendance-2.png" alt="Image showing the parts of attendance"></p>
+
+<p>And compare it with a Original Course view:</p>
+
+<p><img src="./Using Attendance APIs_files/docs-site_attendance-3.png" alt="Image showing original course view of attendance"></p>
+
+<p>Did you spot the differences within Ultra Course View (<strong>UCV</strong>) and Original Course View (<strong>OCV</strong>)?</p>
+
+<p>Neither did I! Since Attendance uses a Building block the functionality and look &amp; feel is the same for both UCV and OCV. So I will continue my examples using ONLY Ultra course view, BUT before I talk about the endpoints itself, let’s give them a bit of structure since there are 18 of them and things might get a bit confusing.</p>
+
+<h2 id="endpoints-structure" class="section scrollspy" style="border-left-color: rgb(162, 52, 181);">Endpoints Structure</h2>
+
+<p>As I mentioned, there are 17 endpoints that compose this API, and reading them at first is kind of confusing, so I decided to break them down in 3 parts:</p>
+
+<ul>
+  <li>Meeting</li>
+  <li>User</li>
+  <li>Report (The report is part of it but is not a part itself, but I figure maybe to let it be)</li>
+</ul>
+
+<p>Every part (Meeting and user) can be considered as an object, and each object has methods that can be grouped the records it affects/returns:</p>
+
+<ul>
+  <li>One</li>
+  <li>Batch / Many</li>
+</ul>
+
+<p><img src="./Using Attendance APIs_files/docs-site_attendance-4.png" alt="Image showing original course view of attendance"></p>
+
+<p>Given this idea of objects and groups I have broken down the endpoints to make them easy to follow up in this nice image:</p>
+
+<p><img src="./Using Attendance APIs_files/docs-site_attendance-5.png" alt="Image showing A break down per object and method of attendance rest api endpoints"></p>
+
+<p>Hopefully this last image is helpful, if you have any questions, please contact us at developers@anthology.com</p>
+
+<blockquote>
+  <p>A very important note to keep in mind: As of the date of creation of this document, If you create an attendance meeting using the REST API, the attendance status CANNOT be modified using the GUI, it can ONLY be modified using REST API. This does not apply to meetings created in the GUI, you can modify those using either the GUI or the REST API.</p>
+</blockquote>
+
+<h3 id="meeting-related-endpoints" class="section scrollspy">Meeting related endpoints</h3>
+
+<h4 id="one-by-one-operations-with-meetings">One by one operations with meetings</h4>
+
+<h4 id="creating-a-meeting">Creating a meeting</h4>
+
+<p>When you use the GUI, you can click on the “Overall” button and click then on the “Plus (+) button next to the current meeting (or overall score).</p>
+
+<p><img src="./Using Attendance APIs_files/docs-site_attendance-6.png" alt="Image showing where you can create a new meeting"></p>
+
+<p>When you create a new column, it automatically takes in today’s date as the column name. Then you will be able to mark the student’s attendance status:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="s2">"Present"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Absent"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Late"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Excused"</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+
+<p>you can learn even more about attendance here: https://help.blackboard.com/Learn/Administrator/SaaS/Tools_Management/Attendance</p>
+
+<p>Now, when creating one using REST API is quite simple use:</p>
+
+<ul>
+  <li><strong>POST</strong> /learn/api/public/v1/courses/{courseId}/meetings</li>
+</ul>
+
+<p>And in the body:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"courseId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_912_1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Meeting title"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Meeting Description"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-18T16:25:47.416Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-18T18:25:47.416Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"externalLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This optional field can be an url"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>When the api is successful, it returns 200:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">465</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"courseId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_912_1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Meeting title"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Meeting Description"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-18T16:25:47.416Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-18T18:25:47.416Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"externalLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https//google.com"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>And this is how a meeting created using our API looks like and its parts:</p>
+
+<p><img src="./Using Attendance APIs_files/docs-site_attendance-7.png" alt="A new meeting created using REST API"></p>
+
+<h4 id="returning-a-meeting">Returning a meeting</h4>
+
+<p>We already know how to create a meeting, and in the same process we are seeing all the meetings, it is possible to get the same data on the api using</p>
+
+<ul>
+  <li><strong>GET</strong> /learn/api/public/v1/courses/:courseId/meetings/:meetingId</li>
+</ul>
+
+<p>When 200:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">465</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"courseId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_912_1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Meeting title"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Meeting Description"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-18T16:25:47.416Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-18T18:25:47.416Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"externalLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https//google.com"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="mapping-the-results">Mapping the results</h4>
+
+<p>Here is a mapping of the results returned by the API and what we have in the GUI.</p>
+
+<p><img src="./Using Attendance APIs_files/docs-site_attendance-8.png" alt="Values returned by the API mapped to the GUI"></p>
+
+<h4 id="updating-a-meeting">Updating a meeting</h4>
+
+<ul>
+  <li><strong>PATCH</strong> /learn/api/public/v1/courses/:courseId/meetings/:meetingId</li>
+</ul>
+
+<p>Using the same body as POST</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"courseId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_912_1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Meeting title"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Meeting Description"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-18T16:25:47.416Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-18T18:25:47.416Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"externalLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This optional field can be an url"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="deleting-a-meeting">Deleting a meeting</h4>
+
+<p>This endpoint deletes a meeting</p>
+
+<ul>
+  <li><strong>DELETE</strong> /learn/api/public/v1/courses/:courseId/meetings/:meetingId</li>
+</ul>
+
+<h4 id="batch-operations-with-meetings">Batch operations with Meetings</h4>
+
+<p>You can perform batch operations with meetings as well, however those are limited to Read and delete, meaning you can either read ALL the meetings in a course or you can remove ALL the meetings in a course. The delete all meetings in a course is a VERY powerful endpoint, use it carefully!</p>
+
+<h4 id="return-all-meetings-in-a-course">Return all meetings in a course</h4>
+
+<ul>
+  <li><strong>GET</strong> /learn/api/public/v1/courses/{courseId}/meetings</li>
+</ul>
+
+<p>Returns 200</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">435</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"courseId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_912_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-12T20:49:55.885Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">436</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"courseId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_912_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-12T20:50:40.449Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">437</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"courseId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_912_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-12T20:50:44.846Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">438</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"courseId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_912_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-12T20:50:56.525Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">439</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"courseId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_912_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-13T17:25:14.750Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">440</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"courseId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_912_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-14T19:28:17.614Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">463</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"courseId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_912_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-18T14:58:05.821Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">465</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"courseId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_912_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Meeting title"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Meeting Description"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-18T16:25:47.416Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-18T18:25:47.416Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"externalLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https//google.com"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="remove-all-meetings-from-the-course">Remove all meetings from the course</h4>
+
+<ul>
+  <li><strong>DELETE</strong> /learn/api/public/v1/courses/{courseId}/meetings</li>
+</ul>
+
+<p>When it is successful returns 204</p>
+
+<h3 id="user-related-endpoints" class="section scrollspy">User related endpoints</h3>
+
+<h4 id="one-by-one-operations">one by one operations</h4>
+
+<h4 id="creating-an-attendance-record-for-one-user-in-one-meeting">Creating an attendance record for one user in one meeting</h4>
+
+<p>We have this meeting that we need to add attendance records to:</p>
+
+<p><img src="./Using Attendance APIs_files/docs-site_attendance-9.png" alt="A meeting in Ultra course view with no attendance records"></p>
+
+<ul>
+  <li><strong>POST</strong> /learn/api/public/v1/courses/:courseId/meetings/:meetingId/users</li>
+</ul>
+
+<p>Body</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"meetingId"</span><span class="p">:</span><span class="w"> </span><span class="mi">465</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Present"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_15104_1"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>when it is successful, it returns 201, it looks like this in the GUI:</p>
+
+<p><img src="./Using Attendance APIs_files/docs-site_attendance-10.png" alt="A meeting in Ultra course view with an attendance record"></p>
+
+<h4 id="returning-an-attendance-record-for-one-user-in-one-meeting">Returning an Attendance record for one user in one meeting</h4>
+
+<ul>
+  <li><strong>GET</strong> /learn/api/public/v1/courses/:courseId/meetings/:meetingId/users/:userId</li>
+</ul>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">760</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"meetingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"465"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_15104_1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Present"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>This basically returns the same information found in the previous image.</p>
+
+<h4 id="updating-an-attendance-record-for-one-user-in-one-meeting">Updating an attendance record for one user in one meeting</h4>
+
+<ul>
+  <li><strong>PATCH</strong> /learn/api/public/v1/courses/:courseId/meetings/:meetingId/users/:userId</li>
+</ul>
+
+<p>Body</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"meetingId"</span><span class="p">:</span><span class="w"> </span><span class="mi">465</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_15104_1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Excused"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Returns when 200:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">760</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"meetingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"465"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_15104_1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Excused"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="./Using Attendance APIs_files/docs-site_attendance-11.png" alt="A meeting in Ultra course view with an attendance record updated"></p>
+
+<h4 id="deleting-an-attendance-record-for-one-user-in-one-meeting">Deleting an attendance record for one user in one meeting</h4>
+
+<ul>
+  <li><strong>DELETE</strong> /learn/api/public/v1/courses/:courseId/meetings/:meetingId/users/:userId</li>
+</ul>
+
+<p>When successful, returns 204 NO CONTENT</p>
+
+<p><img src="./Using Attendance APIs_files/docs-site_attendance-12.png" alt="A meeting in Ultra course view with an attendance record removed"></p>
+
+<h4 id="batch-operations">Batch operations</h4>
+
+<h4 id="creating-attendance-status-for-all-users-in-one-meeting">Creating attendance status for all users in one meeting</h4>
+
+<p>Even though the endpoint documentation marks user_id and meeting_id as mandatory fields (in the body), you only need to send in the body the status like this:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Excused"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>This basically updates all students’ attendance status to the same for <strong>ALL OF THEM.</strong>
+<img src="./Using Attendance APIs_files/docs-site_attendance-13.png" alt="A meeting in Ultra course view all users with the same attendance status"></p>
+
+<h4 id="return-all-users-and-their-attendance-status-to-one-meeting">Return ALL users and their attendance status to one meeting</h4>
+
+<p><img src="./Using Attendance APIs_files/docs-site_attendance-14.png" alt="A meeting in Ultra course view with all students attendance marked"></p>
+
+<ul>
+  <li><strong>GET</strong> /learn/api/public/v1/courses/:courseId/meetings/:meetingId/users</li>
+</ul>
+
+<p>When 200 returns:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">761</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"meetingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"465"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_15104_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Present"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">762</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"meetingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"465"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_15913_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Late"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="return-all-attendance-status-of-one-user-to-all-meetings-in-one-course">Return ALL attendance status of one user to all meetings in one course</h4>
+
+<p>Now, let’s say you want to have all the attendance records of one user, with this endpoint, you will get all the attendance status if all the available meetings for one specific user</p>
+
+<ul>
+  <li><strong>GET</strong> /learn/api/public/v1/courses/:courseId/meetings/users/:userId</li>
+</ul>
+
+<p><img src="./Using Attendance APIs_files/docs-site_attendance-15.png" alt="A meeting in Ultra course view all the meetings and attendance for one user marked with their status"></p>
+
+<p>When 200, returns:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">714</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"meetingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"435"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_15104_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Present"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">716</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"meetingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"436"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_15104_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Late"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">718</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"meetingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"437"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_15104_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Absent"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">731</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"meetingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"438"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_15104_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Late"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">737</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"meetingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"439"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_15104_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Present"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">761</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"meetingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"465"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_15104_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Present"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">763</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"meetingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"440"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_15104_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Present"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">764</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"meetingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"463"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_15104_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Late"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">765</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"meetingId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"466"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_15104_1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Present"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="removing-all-attendance-records-in-a-meeting">Removing all attendance records in a meeting</h4>
+
+<ul>
+  <li><strong>DELETE</strong> /learn/api/public/v1/courses/:courseId/meetings/:meetingId/users</li>
+</ul>
+
+<p><img src="./Using Attendance APIs_files/docs-site_attendance-16.png" alt="A meeting in Ultra course view all the meetings and attendance for one user marked with their status"></p>
+
+<p>When completed, returns 204 NO CONTENT:</p>
+
+<p><img src="./Using Attendance APIs_files/docs-site_attendance-17.png" alt="A meeting in Ultra course view all the meetings and attendance for one user marked with their status"></p>
+
+<h4 id="removing-all-attendance-records-in-one-course-for-one-user">Removing all attendance records in one course for one user</h4>
+
+<p>This endpoint is very powerful, be careful when using it since it will remove ALL attendance records of a specific user in a course.</p>
+
+<ul>
+  <li><strong>DELETE</strong> / learn/api/public/v1/courses/{courseId}/meetings/users/{userId}</li>
+</ul>
+
+<p>When successful, returns 204 NO CONTENT.</p>
+
+<h4 id="remove-all-attendance-records-in-all-courses-for-one-user">Remove all attendance records in ALL COURSES for one user</h4>
+
+<p>This endpoint is very powerful, be careful when using it since it will remove ALL attendance records of a specific user in ALL courses</p>
+
+<ul>
+  <li><strong>DELETE</strong> / learn/api/public/v1/courses/{courseId}/meetings/users/{userId}</li>
+</ul>
+
+<h4 id="csv-export-endpoint">CSV Export endpoint</h4>
+
+<p>Unfortunately at the moment of writing, this endpoint is not working properly so, I am unable to tell you how it works, however, once this is fixed I will update this, for now, the GUI is the best place to get the information.</p>
+
+</main>
+<div class="toc-parent" style="height: 16027px;">
+  <ul class="table-of-contents">
+    <ul>
+  <li><a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com#introduction" class="active">Introduction</a></li>
+  <li><a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com#endpoints-structure" class="">Endpoints Structure</a>
+    <ul>
+      <li><a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com#meeting-related-endpoints" class="">Meeting related endpoints</a></li>
+      <li><a href="https://blackboard.github.io/rest-apis/learn/working-with-apis/attendance?utm_source=chatgpt.com#user-related-endpoints" class="">User related endpoints</a></li>
+    </ul>
+  </li>
+</ul>
+
+  </ul>
+</div>
+
+<div class="clearfix"></div>
+<footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Contact us</h5>
+          <p class="grey-text text-lighten-4">Reach us out at <a href="mailto:developers@anthology.com?subject=Support%20from%20docs">developers@anthology.com</a> if you have any questions.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Terms and Conditions</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" target="_self" href="https://blackboard.github.io/legal/deprecation-policy">Deprecation Policy</a></li>
+            <li><a class="grey-text text-lighten-3" target="_self" href="https://blackboard.github.io/legal/terms-and-conditions">Terms and Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      <a class="grey-text text-lighten-4 left" target="_blank" href="https://www.anthology.com/">©2022 Anthology Inc. and its affiliates. All rights reserved. </a>
+      </div>
+    </div>
+  </footer>
+
+<script>
+
+
+
+
+      
+
+    // This avoids page 404 to update the submenus when 404 is not part of the menu. This is not mandatory but I hate having errors in the console ¯\_(ツ)_/¯
+  //   const jsPageId = pageId.substring(1);
+  //   if(jsPageId == "404-notFound" || jsPageId == "index"){
+
+  //   }else{
+  //   const currentElement = document.getElementById(jsPageId);
+  //   const listOfLinks = currentElement.parentElement.parentElement.getElementsByTagName("a");
+  //   listOfLinks.item(0).style.fontWeight = "bold";
+  // }
+
+  window.onload = function(){
+        // This modifies dynamically the menu height based on the content height
+        var menu = document.getElementsByClassName('menu');
+        var mainSize = document.getElementsByTagName("main");
+
+        mainSize = mainSize[0].offsetHeight;
+        mainSize = 200 + mainSize;
+
+        menu[0].style.minHeight = mainSize + "px";
+        
+        // Need to resize the whole content when no toc
+        var pageToc = "true";
+        pageToc = pageToc.toLowerCase();
+        var bodyMainContent = document.getElementsByClassName('maincontent');
+        var toc = document.getElementsByClassName('toc-parent');
+
+if(pageToc == 'false'){
+    toc[0].style.display = 'none';
+    bodyMainContent[0].style.width = '81%';
+  } else {
+    mainSize = mainSize - 100;
+    toc[0].style.height = mainSize + 'px';
+ }
+
+if(pageToc == 'false'){
+  window.addEventListener("resize", function(){
+      if (window.innerWidth >= 1499 ) {
+     bodyMainContent[0].style.width = '76%';
+  } else if (window.innerWidth <= 1498 && window.innerWidth >= 985){
+    bodyMainContent[0].style.width = '70%';
+  } else if (window.innerWidth <= 985 && window.innerWidth >= 800){
+     bodyMainContent[0].style.width = '63%';
+  } else if (window.innerWidth <= 800 ){
+     bodyMainContent[0].style.width = '95%';
+  }
+  });
+}
+      
+      
+}
+
+</script>
+
+<div id="ally-af-launcher" class="ally-af-launch-container ally-af-style-flag_small">
+    <button data-ally-content-ref="0" data-ally-invoke="alternativeformats">
+        <img class="ally-af-launch-icon-white" src="./Using Attendance APIs_files/iconAllyDownload-IC-White.9750b42d5d7fe4baf2432a3dc743a1a3.svg" alt="" aria-hidden="true">
+        <img class="ally-af-launch-icon-black" src="./Using Attendance APIs_files/iconAllyDownload-IC-Black.edde979ad5266d2085fee7571f1af90f.svg" alt="" aria-hidden="true">
+        <span>Download alternative formats ...</span>
+    </button>
+</div><div role="log" aria-live="assertive" aria-relevant="additions" class="ally-helper-hidden-accessible"></div></body></html>
